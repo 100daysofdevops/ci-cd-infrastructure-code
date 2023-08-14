@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gitops-pipeline-deployment
+  labels:
+    app: gitops-pipeline
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: gitops-pipeline
+  template:
+    metadata:
+      labels:
+        app: gitops-pipeline
+    spec:
+      containers:
+      - name: gitops-pipeline-container
+        image: lakhera2014/gitops_pipeline:v1
+        ports:
+        - containerPort: 5000
